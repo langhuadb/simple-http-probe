@@ -4,6 +4,7 @@ import (
 	"flag"
 	"log"
 	"simple-http-probe/config"
+	"simple-http-probe/http"
 )
 
 var (
@@ -21,4 +22,7 @@ func main() {
 		return
 	}
 	log.Printf("配置是：%v\n",conf)
+	// 启动gin
+	go http.StartGin(conf)
+	select {}
 }
