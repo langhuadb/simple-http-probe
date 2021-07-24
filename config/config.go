@@ -1,13 +1,14 @@
 package config
 
 import (
-	"gopkg.in/yaml.v3"
+	"gopkg.in/yaml.v2"
 	"io/ioutil"
+	"log"
 )
 
 type Config struct {
 	HttpListenAddr	string `yaml:"http_listen_addr"`
-	HttpProbeTimeoutSecond	int	`json:"http_probe_timeout_second"`
+	HttpProbeTimeoutSecond	int	`yaml:"http_probe_timeout_second"`
 }
 
 // yaml解析
@@ -29,6 +30,7 @@ func LoadFile(filename string)(*Config,error)  {
 	}
 	cfg,err := Load(content)
 	if err != nil {
+		log.Printf("load.yaml.error: %v\n",err)
 		return nil, err
 	}
 	return cfg,nil
