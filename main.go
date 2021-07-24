@@ -9,6 +9,7 @@ import (
 var (
 	configFile string
 )
+
 func main() {
 	// 传入配置文件路径
 	flag.StringVar(&configFile,"c","simple-http-probe.yaml","config file path")
